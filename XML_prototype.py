@@ -2,6 +2,10 @@
 import sys
 import xml.etree.ElementTree as etree
 
+
+#Testing 
+
+
 #Read input arguments
 fileName = 'LRG.xml'#sys.argv[1]
 #fileOutTitle = sys.argv[2]
@@ -15,6 +19,7 @@ fileName = 'LRG.xml'#sys.argv[1]
 
 tree = etree.parse(fileName)
 root = tree.getroot()
+
 out = open('output',"a")
 for element in root[0].iter():
     for i in element:
@@ -23,9 +28,8 @@ for element in root[0].iter():
             break
 
 
-
-
-
+for f in fileName:
+	assert fileName == '*.xml', 'You have the wrong input file'   
 
 
 
