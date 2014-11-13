@@ -7,7 +7,8 @@ import xml.etree.ElementTree as etree
 
 
 #Read input arguments
-fileName = 'LRG.xml'#sys.argv[1]
+fileName = sys.argv[1]
+assert fileName[-4:] == '.xml', 'You have the wrong input file'   
 #fileOutTitle = sys.argv[2]
 #fileOut = open(fileOutTitle, 'w')
 
@@ -27,10 +28,10 @@ for element in root[0].iter():
             genseq = i.text
             break
 
-
-for f in fileName:
-	assert fileName == '*.xml', 'You have the wrong input file'   
-
+for items in root.iter(tag="transcript"):
+    if 'name' in items.attrib.keys():
+        if items.attrib['name'] == "t1":
+            print items
 
 
 
