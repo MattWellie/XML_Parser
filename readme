@@ -1,0 +1,33 @@
+This project is to create an XML parser in Python capable of reading an LRG file
+
+
+Goals:
+ 
+LRG IN
+FASTA OUT
+
+Method:
+
+Pass file title to program as a string argument (cmd line)
+	pass optional command to specify genomic, cDNA, protein.. (genomic default)
+	optional argument to specify intronic sequence length around exons
+Read sequence (all?) into a variable
+
+use tree iteration to find all exons
+
+
+Output:
+		
+FastA file from LRG
+Each exon identified and corresponding sequence
+	Details of exon (start, length..)
+
+ - where to store output (specify output path)
+
+Testing:
+
+Valid input file/filename
+Required tags are present (not tampered with)
+correct sequence lengths
+
+
