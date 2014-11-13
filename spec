@@ -8,4 +8,10 @@ Seperate methods for genomic, cDNA & protein?
 
 
 
+>Gene | ref.seq | Description?
+TACTATGCTAGC
+>Transcript  Exon 1 | CoOrds (start, finish) | Padding:(N/A)/#Bases | UID
+ASDFASDF
+
+
 
