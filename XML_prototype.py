@@ -2,8 +2,31 @@
 import sys
 import xml.etree.ElementTree as etree
 
-
 #Read input arguments
+fileName = sys.argv[1]
+fileOutTitle = sys.argv[2]
+fileOut = open(fileOutTitle, 'w')
+
+try:
+	#Optional option, genomic default
+	option = sys.argv[3]
+except:
+	option = '-g'
+
+tree = etree.parse(fileName)
+root = tree.getroot()
+
+
+
+
+
+
+
+
+
+
+
+#Printing things
 
 #Check file name is valid/ file is present
 
