@@ -7,21 +7,30 @@ import xml.etree.ElementTree as etree
 
 
 #Read input arguments
-fileName = sys.argv[1]
-fileOutTitle = sys.argv[2]
-fileOut = open(fileOutTitle, 'w')
+fileName = 'LRG.xml'#sys.argv[1]
+#fileOutTitle = sys.argv[2]
+#fileOut = open(fileOutTitle, 'w')
 
-try:
+#try:
 	#Optional option, genomic default
-	option = sys.argv[3]
-except:
-	option = '-g'
+	#option = sys.argv[3]
+#except:
+	#option = '-g'
 
 tree = etree.parse(fileName)
 root = tree.getroot()
 
+out = open('output',"a")
+for element in root[0].iter():
+    for i in element:
+        if i.tag == 'sequence':
+            genseq = i.text
+            break
+
+
 for f in fileName:
 	assert fileName == '*.xml', 'You have the wrong input file'   
+
 
 
 
