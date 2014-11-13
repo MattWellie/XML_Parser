@@ -20,13 +20,8 @@ except:
 tree = etree.parse(fileName)
 root = tree.getroot()
 
-
-
-
-
-
-
-
+for file in fileName:
+	assert 
 
 
 
