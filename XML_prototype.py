@@ -20,8 +20,8 @@ except:
 tree = etree.parse(fileName)
 root = tree.getroot()
 
-for file in fileName:
-	assert 
+for f in fileName:
+	assert fileName == '*.xml', 'You have the wrong input file'   
 
 
 
