@@ -8,9 +8,10 @@ import xml.etree.ElementTree as etree
 
 #Read input arguments
 fileName = sys.argv[1]
+#Check file name is valid/ file is present
 assert fileName[-4:] == '.xml', 'You have the wrong input file'   
-fileOutTitle = sys.argv[2]
-fileOut = open(fileOutTitle, 'w')
+#fileOutTitle = sys.argv[2]
+#fileOut = open(fileOutTitle, 'w')
 
 #try:
 	#Optional option, genomic default
@@ -45,16 +46,8 @@ for exon in exons:
 
 exonLength = endIndex - startIndex
 print >>fileOut, '>Exon ',exonNumber, ' | Length : ', exonLength
-print >>fileOut, 
+#print >>fileOut, 
 
-
-
-
-
-
-
-
-#Check file name is valid/ file is present
 
 #Import file
 
