@@ -2,17 +2,31 @@
 import sys
 import xml.etree.ElementTree as etree
 import glob
+import os
 
+#Read input arguments - should be
+# [0] - program name
+# [1] - Input XML file name
+# [2] - Output file name (optional argument)
 
-#Testing 
-
-
-#Read input arguments
+#Read input file name from arguments
 fileName = sys.argv[1]
-#Check file name is valid/ file is present
+#Check file name is valid .xml
 assert fileName[-4:] == '.xml', 'You have the wrong input file'   
 
-#fileOutTitle = sys.argv[2]
+#Read output file title from arguments
+fileOutTitle = sys.argv[2]
+
+##### Check that the file specified does not already exist
+existingFiles = os.listdir('/home/swc/XML_Parser')
+if fileOutTitle in existingFiles:
+	print 'The output file already exists in the present directory'
+	print 'Would you like to override the file? y/n'
+	userChoice = raw_input('> ')
+	if userChoice == 'n':
+		exit()
+	
+#Open the specified file
 #fileOut = open(fileOutTitle, 'w')
 
 #try:
