@@ -39,7 +39,6 @@ def grab_seqslices(exoncoordlist,sequence):
 
 #def printtofasta():
 
-
 #if elif options for which sequences need to be grabbed 
 x = grab_element('fixed_annotation/sequence')
 td = get_exoncoords(fixannot)
