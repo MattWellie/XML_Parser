@@ -2,6 +2,9 @@ import sys
 import xml.etree.ElementTree as etree
 import glob
 
+assert len(sys.argv) < 1, "Too many arguments!"
+print len(sys.argv)
+
 fileName = sys.argv[1]
 
 tree = etree.parse(fileName)
