@@ -9,9 +9,10 @@ import glob
 
 #Read input arguments
 fileName = sys.argv[1]
+#Check file name is valid/ file is present
 assert fileName[-4:] == '.xml', 'You have the wrong input file'   
-fileOutTitle = sys.argv[2]
-fileOut = open(fileOutTitle, 'w')
+#fileOutTitle = sys.argv[2]
+#fileOut = open(fileOutTitle, 'w')
 
 #try:
 	#Optional option, genomic default
@@ -58,16 +59,7 @@ for exon in exons:
 			print 'For exon ', exonNumber, ', the start is ', startIndex, ' and the end is ', endIndex
 			print >>fileOut, '>Exon ',exonNumber, ' | Length : ', exonLength
 
-#print >>fileOut, 
 
-
-
-
-
-
-
-
-#Check file name is valid/ file is present
 
 #Import file
 
