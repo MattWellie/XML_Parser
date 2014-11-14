@@ -72,12 +72,12 @@ def get_exoncoords(level,padding,genseq):
 					#ensures only genomic coords are taken
 					startIndex = int(coordinates.attrib['start'])
 					endIndex = int(coordinates.attrib['end'])
-					assert startIndex >= 0
-					assert endIndex <= len(genseq)
+					assert startIndex >= 0, "Exon index out of bounds"
+					assert endIndex <= len(genseq), "Exon index out of bounds"
 					seq = genseq[startIndex-1:endIndex]
 					if padding > 0:					
-						assert startIndex - pad >= 0
-						assert endIndex + pad <= len(genseq)
+						assert startIndex - pad >= 0, "Exon index out of bounds"
+						assert endIndex + pad <= len(genseq), "Exon index out of bounds"
 						pad5 = genseq[startIndex-padding-1:startIndex]
 						pad3 = genseq[endIndex:endIndex+padding+1]
 						seq = pad5.lower() + seq + pad3.lower()
