@@ -2,6 +2,7 @@
 import sys
 import xml.etree.ElementTree as etree
 import glob
+import re
 import os
 
 #Read input arguments - should be
@@ -12,14 +13,17 @@ import os
 #Read input file name from arguments
 fileName = sys.argv[1]
 #Check file name is valid .xml
-assert fileName[-4:] == '.xml', 'You have the wrong input file'   
-
+assert fileName[-4:] == '.xml', 'You have the wrong input file' 
 
 #Scan for the optional argument specifying genomic/protein etc (extension)
 #try:
 	#option = sys.argv[3]
 #except:
 	#option = '-g'
+
+
+#Check the version of the file we are openeing is correct
+assert root.attrib['schema_version'] == '1.8', 'This file is not the correct version'
 
 #Read in the specified input file into a variable
 try:
@@ -44,7 +48,7 @@ if fileOut in existingFiles:
 	if userChoice == 'n':
 		exit()
 
-
+ 
 #Open the specified output file
 #fileOutPath = '/home/swc/XML_Parser/outputFiles'
 #fileOut = open(fileOutPath, 'w')
@@ -55,29 +59,49 @@ out = open('output',"a")
 fixannot = root.find('fixed_annotation')
 
 
-sequences = []
-for element in fixannot.iter():
-	if element.tag == 'sequence':
-		sequences.append(element.text)
-		genseq = max(sequences, key=len)
-		protseq = min(sequences,key=len)
+def getseqelement()
+	for element in fixannot.iter():
+		if element.tag == 'sequence':
+			sequences.append(element.text)
 		
+<<<<<<< HEAD
+=======
+
+nucleotides = ['A','T','C','G']
+
+for l in genseq:
+	if l not in nucleotides:
+		print "this is not the genomic sequence"
+		exit()
 		
 
+>>>>>>> 11ae8e625bd4da988ae4dfd63656597f67a3273d
 print protseq
 
-exons = []
-for items in fixannot.iter(tag="transcript"):
-    if 'name' in items.attrib.keys():
-        if items.attrib['name'] == "t1":
-            exons = items.iter('exon')
+def get_exoncoord()
+	exons = []
+	for items in fixannot.iter(tag="transcript"):
+    	if 'name' in items.attrib.keys():
+       		if items.attrib['name'] == "t1":
+            	exons = items.iter('exon')
+
+##REGEX
+'''regex = re.compile('LRG_*')
+for exon in exons:
+	for coordinates in exon:
+		print coordinates.attrib['coord_system']
+		if re.match(regex, coordinates.attrib['coord_system']):
+			print  coordinates.attrib['coord_system']'''
 
 
 for exon in exons:
-	exonNumber = exon.attrib['label']
-#	print exon    
+	exonNumber = exon.attrib['label']  
 	for coordinates in exon:
-		if coordinates.attrib['coord_system'] == 'LRG_1':
+		if coordinates.attrib['coord_system'][-2] not in ['t','p']:
+<<<<<<< HEAD
+=======
+			print coordinates.attrib['coord_system']
+>>>>>>> 11ae8e625bd4da988ae4dfd63656597f67a3273d
 			startIndex = int(coordinates.attrib['start'])
 			endIndex = int(coordinates.attrib['end'])
 			exonLength = endIndex - startIndex
