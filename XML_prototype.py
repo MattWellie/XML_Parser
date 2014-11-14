@@ -12,6 +12,7 @@ import os
 
 #Read input file name from arguments
 fileName = sys.argv[1]
+
 #Check file name is valid .xml
 assert fileName[-4:] == '.xml', 'You have the wrong input file' 
 
@@ -21,10 +22,6 @@ assert fileName[-4:] == '.xml', 'You have the wrong input file'
 #except:
 	#option = '-g'
 
-
-#Check the version of the file we are openeing is correct
-assert root.attrib['schema_version'] == '1.8', 'This file is not the correct version'
-
 #Read in the specified input file into a variable
 try:
 	tree = etree.parse(fileName)
@@ -32,6 +29,9 @@ try:
 except IOError as fileNotPresent:
 	print "The specified file cannot be located: " + fileNotPresent.filename
 	exit()
+
+#Check the version of the file we are openeing is correct
+assert root.attrib['schema_version'] == '1.8', 'This file is not the correct version'
 
 #Read output file title from arguments
 fileOutTitle = sys.argv[2]
@@ -75,8 +75,6 @@ for l in genseq:
 		exit()
 		
 
-print protseq
-
 exons = []
 for items in fixannot.iter(tag="transcript"):
     if 'name' in items.attrib.keys():
@@ -102,14 +100,10 @@ for exon in exons:
 			exonLength = endIndex - startIndex
 			print 'For exon ', exonNumber, ', the start is ', startIndex, ' and the end is ', endIndex
 			exonLength = int(endIndex) - int(startIndex)
-#			print  '>Exon ',exonNumber, ' | Length : ', exonLength
-#			print >>fileOut, '>Exon ',exonNumber, ' | Length : ', exonLength
 
 
 
-#Import file
 
-#Check file contents
 
 #Read transcript as a variable
 
