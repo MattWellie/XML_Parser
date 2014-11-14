@@ -35,9 +35,9 @@ fileOutTitle = sys.argv[2]
 #Check that the specified output file does not already exist
 #List all files in present directory
 existingOutputFiles = os.listdir('/home/swc/XML_Parser/outputFiles')
+fileOut = '/home/swc/XML_Parser/outputFiles' + fileOutTitle
 
-
-if fileOutTitle in existingFiles:
+if fileOut in existingFiles:
 	print 'The output file already exists in the present directory'
 	print 'Would you like to override the file? y/n'
 	userChoice = raw_input('> ')
@@ -83,17 +83,5 @@ for exon in exons:
 			exonLength = endIndex - startIndex
 			print 'For exon ', exonNumber, ', the start is ', startIndex, ' and the end is ', endIndex
 			exonLength = int(endIndex) - int(startIndex)
-#			print  '>Exon ',exonNumber, ' | Length : ', exonLength
-#			print >>fileOut, '>Exon ',exonNumber, ' | Length : ', exonLength
 
 
-
-#Import file
-
-#Check file contents
-
-#Read transcript as a variable
-
-#Identify a list of exons
-
-#For each exon, find corresponding stuff as string slices
