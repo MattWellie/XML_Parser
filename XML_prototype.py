@@ -3,30 +3,56 @@ import sys
 import xml.etree.ElementTree as etree
 import glob
 import re
+import os
 
-#Read input arguments
+#Read input arguments - should be
+# [0] - program name
+# [1] - Input XML file name
+# [2] - Output file name (optional argument)
+
+#Read input file name from arguments
 fileName = sys.argv[1]
-#Check file name is valid/ file is present
+#Check file name is valid .xml
 assert fileName[-4:] == '.xml', 'You have the wrong input file' 
 
-  
-#fileOutTitle = sys.argv[2]
-#fileOut = open(fileOutTitle, 'w')
-
+#Scan for the optional argument specifying genomic/protein etc (extension)
 #try:
-	#Optional option, genomic default
 	#option = sys.argv[3]
 #except:
 	#option = '-g'
 
-tree = etree.parse(fileName)
-root = tree.getroot()
-#fileexist = glob.glob(sys.argv[2])
-#if len(fileexist) > 0:
-	#WARN about file overwrite
 
 #Check the version of the file we are openeing is correct
 assert root.attrib['schema_version'] == '1.8', 'This file is not the correct version'
+
+#Read in the specified input file into a variable
+try:
+	tree = etree.parse(fileName)
+	root = tree.getroot()
+except IOError as fileNotPresent:
+	print "The specified file cannot be located: " + fileNotPresent.filename
+	exit()
+
+#Read output file title from arguments
+fileOutTitle = sys.argv[2]
+
+#Check that the specified output file does not already exist
+#List all files in present directory
+existingOutputFiles = os.listdir('/home/swc/XML_Parser/outputFiles')
+
+
+if fileOutTitle in existingFiles:
+	print 'The output file already exists in the present directory'
+	print 'Would you like to override the file? y/n'
+	userChoice = raw_input('> ')
+	if userChoice == 'n':
+		exit()
+
+
+#Open the specified output file
+#fileOutPath = '/home/swc/XML_Parser/outputFiles'
+#fileOut = open(fileOutPath, 'w')
+
 
 out = open('output',"a")
 
@@ -75,7 +101,9 @@ for exon in exons:
 			endIndex = int(coordinates.attrib['end'])
 			exonLength = endIndex - startIndex
 			print 'For exon ', exonNumber, ', the start is ', startIndex, ' and the end is ', endIndex
-			print >>fileOut, '>Exon ',exonNumber, ' | Length : ', exonLength
+			exonLength = int(endIndex) - int(startIndex)
+#			print  '>Exon ',exonNumber, ' | Length : ', exonLength
+#			print >>fileOut, '>Exon ',exonNumber, ' | Length : ', exonLength
 
 
 
