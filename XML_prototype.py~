@@ -23,8 +23,9 @@ assert fileName[-4:] == '.xml', 'You have the wrong input file'
 try:
 	tree = etree.parse(fileName)
 	root = tree.getroot()
-except IOError as FileNotPresent:
-	print "The specified file cannot be located: " + fileName
+except IOError as fileNotPresent:
+	print "The specified file cannot be located: " + fileNotPresent.filename
+	print fileNotPresent.message
 	exit()
 
 print root.attrib['schema_version']
