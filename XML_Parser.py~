@@ -101,7 +101,7 @@ for y in td.keys():
 	if outputfile in existingFiles:
 		#tests whether file already exists
 		print 'The output file already exists in the present directory'
-		print 'Would you like to overwrite the file? y/n'
+		print 'Would you like to overwtite the file? y/n'
 		c = 0
 		while c == 0:
 	  		userChoice = raw_input('> ')
