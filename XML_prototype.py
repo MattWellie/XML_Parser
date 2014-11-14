@@ -9,8 +9,8 @@ import xml.etree.ElementTree as etree
 #Read input arguments
 fileName = sys.argv[1]
 assert fileName[-4:] == '.xml', 'You have the wrong input file'   
-fileOutTitle = sys.argv[2]
-fileOut = open(fileOutTitle, 'w')
+#fileOutTitle = sys.argv[2]
+#fileOut = open(fileOutTitle, 'w')
 
 #try:
 	#Optional option, genomic default
@@ -20,6 +20,8 @@ fileOut = open(fileOutTitle, 'w')
 
 tree = etree.parse(fileName)
 root = tree.getroot()
+
+print root.attrib['schema_version']
 
 out = open('output',"a")
 for element in root[0].iter():
@@ -43,9 +45,9 @@ for exon in exons:
 			endIndex = coordinates.attrib['end']
 			print 'For exon ', exonNumber, ', the start is ', startIndex, ' and the end is ', endIndex
 
-exonLength = endIndex - startIndex
-print >>fileOut, '>Exon ',exonNumber, ' | Length : ', exonLength
-print >>fileOut, 
+			exonLength = int(endIndex) - int(startIndex)
+			print  '>Exon ',exonNumber, ' | Length : ', exonLength
+#print >>fileOut, 
 
 
 
