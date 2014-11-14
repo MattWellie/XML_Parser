@@ -11,6 +11,7 @@ import glob
 fileName = sys.argv[1]
 #Check file name is valid/ file is present
 assert fileName[-4:] == '.xml', 'You have the wrong input file'   
+
 #fileOutTitle = sys.argv[2]
 #fileOut = open(fileOutTitle, 'w')
 
@@ -19,9 +20,12 @@ assert fileName[-4:] == '.xml', 'You have the wrong input file'
 	#option = sys.argv[3]
 #except:
 	#option = '-g'
-
-tree = etree.parse(fileName)
-root = tree.getroot()
+try:
+	tree = etree.parse(fileName)
+	root = tree.getroot()
+except IOError as FileNotPresent:
+	print "The specified file cannot be located: " + fileName
+	exit()
 
 print root.attrib['schema_version']
 
@@ -61,14 +65,9 @@ for exon in exons:
 			endIndex = int(coordinates.attrib['end'])
 			exonLength = endIndex - startIndex
 			print 'For exon ', exonNumber, ', the start is ', startIndex, ' and the end is ', endIndex
-<<<<<<< HEAD
-
 			exonLength = int(endIndex) - int(startIndex)
-			print  '>Exon ',exonNumber, ' | Length : ', exonLength
-#print >>fileOut, 
-=======
-			print >>fileOut, '>Exon ',exonNumber, ' | Length : ', exonLength
->>>>>>> dba99a0ebdd17550e8327911e64ab98f30766446
+#			print  '>Exon ',exonNumber, ' | Length : ', exonLength
+#			print >>fileOut, '>Exon ',exonNumber, ' | Length : ', exonLength
 
 
 

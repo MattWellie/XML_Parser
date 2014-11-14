@@ -11,6 +11,7 @@ import glob
 fileName = sys.argv[1]
 #Check file name is valid/ file is present
 assert fileName[-4:] == '.xml', 'You have the wrong input file'   
+
 #fileOutTitle = sys.argv[2]
 #fileOut = open(fileOutTitle, 'w')
 
@@ -19,12 +20,19 @@ assert fileName[-4:] == '.xml', 'You have the wrong input file'
 	#option = sys.argv[3]
 #except:
 	#option = '-g'
+try:
+	tree = etree.parse(fileName)
+	root = tree.getroot()
+except IOError as FileNotPresent:
+	print "The specified file cannot be located: " + fileName
+	exit()
 
-tree = etree.parse(fileName)
-root = tree.getroot()
+print root.attrib['schema_version']
+
 #fileexist = glob.glob(sys.argv[2])
 #if len(fileexist) > 0:
 	#WARN about file overwrite
+
 out = open('output',"a")
 
 fixannot = root.find('fixed_annotation')
@@ -57,7 +65,9 @@ for exon in exons:
 			endIndex = int(coordinates.attrib['end'])
 			exonLength = endIndex - startIndex
 			print 'For exon ', exonNumber, ', the start is ', startIndex, ' and the end is ', endIndex
-			print >>fileOut, '>Exon ',exonNumber, ' | Length : ', exonLength
+			exonLength = int(endIndex) - int(startIndex)
+#			print  '>Exon ',exonNumber, ' | Length : ', exonLength
+#			print >>fileOut, '>Exon ',exonNumber, ' | Length : ', exonLength
 
 
 
