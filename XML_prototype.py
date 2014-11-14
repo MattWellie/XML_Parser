@@ -30,29 +30,26 @@ out = open('output',"a")
 fixannot = root.find('fixed_annotation')
 
 
-sequences = []
-for element in fixannot.iter():
-	if element.tag == 'sequence':
-		sequences.append(element.text)
-		genseq = max(sequences, key=len)
-		protseq = min(sequences,key=len)
+def getseqelement()
+	for element in fixannot.iter():
+		if element.tag == 'sequence':
+			sequences.append(element.text)
 		
-		
-
 print protseq
 
-exons = []
-for items in fixannot.iter(tag="transcript"):
-    if 'name' in items.attrib.keys():
-        if items.attrib['name'] == "t1":
-            exons = items.iter('exon')
+def get_exoncoord()
+	exons = []
+	for items in fixannot.iter(tag="transcript"):
+    	if 'name' in items.attrib.keys():
+       		if items.attrib['name'] == "t1":
+            	exons = items.iter('exon')
 
 
 for exon in exons:
 	exonNumber = exon.attrib['label']
 #	print exon    
 	for coordinates in exon:
-		if coordinates.attrib['coord_system'] == 'LRG_1':
+		if coordinates.attrib['coord_system'][-2] not in ['t','p']:
 			startIndex = int(coordinates.attrib['start'])
 			endIndex = int(coordinates.attrib['end'])
 			exonLength = endIndex - startIndex
