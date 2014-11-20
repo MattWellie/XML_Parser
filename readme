@@ -1,33 +1,35 @@
 This project is to create an XML parser in Python capable of reading an LRG file
+	LRG IN; FASTA OUT
 
-
-Goals:
- 
-LRG IN
-FASTA OUT
+Input:
+	Pass file title to program as a string argument (cmd line)
+	Optional argument to specify intronic sequence length around exons
+	Pass optional command to specify genomic, cDNA, protein.. (genomic default)
+	Program creates an output file based on the sequences used
 
 Method:
-
-Pass file title to program as a string argument (cmd line)
-	pass optional command to specify genomic, cDNA, protein.. (genomic default)
-	optional argument to specify intronic sequence length around exons
-Read sequence (all?) into a variable
-
-use tree iteration to find all exons
-
-
+	Command line arguments are supplied to specify the input file and specific parameters
+	The appropriate sequence is read into a dictionary (multiple sequences where appropriate)
+	Tree iteration is used to find the coordinate details for all exons
+	The name of the output file is created using the input file title (LRG #)
+	Using the coordinates and specific sequence type, the specific portions of sequence corresponding to each
+		exon are output into a output file
+	The presence of an existing file of the same title is checked
+		If a file already exists, the user is prompted to overwrite (Y/N)
+			If the user chooses to overwrite, the program continues
+			If the user chooses not to, the program exits and reports that no output was created
+	
+	
 Output:
-		
-FastA file from LRG
-Each exon identified and corresponding sequence
-	Details of exon (start, length..)
+	FastA file from LRG
+	Each exon identified and corresponding sequence
+	Details of exon (start, length..) and reference sequence 
 
  - where to store output (specify output path)
 
 Testing:
-
-Valid input file/filename
-Required tags are present (not tampered with)
-correct sequence lengths
+	Valid input file/filename
+	Required tags are present (not tampered with)
+	correct sequence lengths
 
 
