@@ -50,9 +50,12 @@ if root.attrib['schema_version'] <> '1.8':
 #Grabs the sequence string from the <sequence/> tagged block
 def grab_element(path, root):
 	'''Grabs specific element from the xml file from a provided path'''
-	for item in root.findall(path):
-		result = item.text
-	return result
+	try:
+		for item in root.findall(path):
+			result = item.text
+		return result
+	except:
+		print "No sequence was identified"
 
 #Grab exon coords and sequences from the xml file 
 def get_exoncoords(level,padding,genseq):
