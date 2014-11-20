@@ -1,6 +1,19 @@
 This project is to create an XML parser in Python capable of reading an LRG file
 	LRG IN; FASTA OUT
 
+GUIDE:
+	To run this program, open a command line terminal and navigate to the directory containing this 
+	program (XML_Parser.py) and desired LRG files. Enter:
+		"python XML_Parser.py LRG_FILE_TITLE INTRONIC_PADDING_LENGTH"
+			Where LRG_FILE_TITLE is an LRG format file ending in ".xml"
+			And INTRONIC_PADDING_LENGTH is a number between 0 and 2000, specifying the length of 
+				intronic flanking sequence around the printed exons
+				As a default, flanking sequences are lower case, and exonic sequence is capitalized
+	This will run the program and create a new folder (if it does not already exist) called outputFiles"
+	If a file in the specified folder already exists, the program will report this at the command line and 
+	ask for a confirmation to continue
+		To be duplicated a file will have to have been created with the same input and flanking length
+
 Input:
 	Pass file title to program as a string argument (cmd line)
 	Optional argument to specify intronic sequence length around exons
@@ -42,4 +55,3 @@ Testing:
 	and commented out. This would cause the program to choose between one of three separate methods, one for 
 	each type. Only one has been written as of 20/11/2014, although this program is extensible.
 	Exceptions were also used to provide users with readable error messages if 
-
