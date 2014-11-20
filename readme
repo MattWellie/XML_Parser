@@ -28,8 +28,18 @@ Output:
  - where to store output (specify output path)
 
 Testing:
-	Valid input file/filename
-	Required tags are present (not tampered with)
-	correct sequence lengths
-
+	Correct performance of this program was confirmed by a combination of assert statements and 
+	error handling techniques throughout the code. Try-catch blocks were used to handle loops and 
+	element access which could produce issues in faulty XML files. Deliberately faulty XML files 
+	were used to check the performance of these measures.
+	Assert statements have been used to prevent users from inserting the wrong inputs into the program, 
+	and to make sure that the number of valid command line arguments are not exceeded
+	Assert statements are used throughout the indexing for string-slicing to ensure that the indexes 
+	used are not out of bounds (such as when the exon coordinates for transcripts are used for protein sequences)
+	Try-catches are used during opening the input file, accessing th sequence elements and determining the 
+	intronic padding to be used when outputting the exons.
+	A draft loop to detect an additional option for genomic, transcript and protein sequences has been written 
+	and commented out. This would cause the program to choose between one of three separate methods, one for 
+	each type. Only one has been written as of 20/11/2014, although this program is extensible.
+	Exceptions were also used to provide users with readable error messages if 
 
