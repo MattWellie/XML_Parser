@@ -34,11 +34,20 @@ Method:
 	
 	
 Output:
-	FastA file from LRG
-	Each exon identified and corresponding sequence
-	Details of exon (start, length..) and reference sequence 
+	FastA file format
+	Each exon is indvidually identified and paired with corresponding sequence
+	The description line identifies the exon number and transcript, so each can be used in isolation.
+		This line also contains the length of the exon for quality control checking
 
- - where to store output (specify output path)
+	Output file name was created using:
+		-the title of the input file
+		-the amount of flanking intron requested
+		-the transcript name (to prevent overwriting in the case of multiple transcripts)
+	At the time of writing, an os test is used to determine if a file with the specified name already 
+	exists, if so the user is prompted to continue or exit.
+	This meant that only a file which would be the exact duplicate of an existing file (all parameters the
+	same) would be capable of replacing the current version
+		This may be desirable if writing with a new version of the program
 
 Testing:
 	Correct performance of this program was confirmed by a combination of assert statements and 
