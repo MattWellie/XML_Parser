@@ -54,4 +54,5 @@ Testing:
 	A draft loop to detect an additional option for genomic, transcript and protein sequences has been written 
 	and commented out. This would cause the program to choose between one of three separate methods, one for 
 	each type. Only one has been written as of 20/11/2014, although this program is extensible.
-	Exceptions were also used to provide users with readable error messages if 
+	Exceptions were also used to provide users with readable error messages if parameters or file contents 
+	were not found at runtime
