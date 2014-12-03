@@ -92,7 +92,7 @@ def get_exoncoords(level,padding,genseq):
 def print_exons(exoncoordlist,transcript,gene,refseqid,outfile):
 	'''Prints the exon sequences with headers to a fasta file'''
 	for ex in exoncoordlist:
-		header = ">Exon_" + ex[0] + "|" + gene + "|" + refseqid +'|LengthOfExon:' + str(ex[2]-ex[1])
+		header = ">Exon_" + ex[0] + "|" + gene + "|" + refseqid +'|LengthOfExon:' + str(ex[2]-ex[1]) + "|StartPos:"+str(ex[1]) + "|EndPos:"+str(ex[2])
 		print >>outfile, header,"\n",ex[-1]
 
 
