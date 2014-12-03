@@ -65,3 +65,7 @@ Testing:
 	each type. Only one has been written as of 20/11/2014, although this program is extensible.
 	Exceptions were also used to provide users with readable error messages if parameters or file contents 
 	were not found at runtime
+
+
+
+*** Note: This program was edited 03/12/2014 to add the coordinates of the exon start/finish to the printed FastA file. Thsi was requested by the genetics lab so they could use the application for creating reference sequence hard copies (getting helpless trainees to spend hours making references and calling it a 'competency')
