@@ -71,7 +71,7 @@ def get_exoncoords(level,padding,genseq):
 		tranexons = []
 		for exon in items.iter('exon'):
 			for coordinates in exon:
-				if coordinates.attrib['coord_system'][-2] not in ['t','p']:
+				if coordinates.attrib['coord_system'][-2:] == transcript:
 					#ensures only genomic coords are taken
 					startIndex = int(coordinates.attrib['start'])
 					endIndex = int(coordinates.attrib['end'])
