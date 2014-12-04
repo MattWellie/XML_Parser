@@ -83,7 +83,8 @@ The added functionality is summarised below;
     - '-p': protein sequence only
     - '-pg' | '-gp': genomic and protein sequence. Layout is header, DNA, protein
 
-I will be going through this soon to standardise variable naming and testing that sequence extracts are correct (content and length)
+* The content of the string subsections isolated using this program have been validated against existing reference sequences for both length and content, with one caveat: 
+	* In WMRGL it is generally standard practice to have the amino acid encoded by a codon above the third letter of the codon, mostly for reasons of appearance. In the LRG file, the coordinates of the amino acids correspond to the base which encodes the *final* base of the codon. This means that at times the amino acids may not appear exactly where they are expected in the reference sequence document, but they will correspond to the correct portion of the sequence.
 
 M. Welland
     
