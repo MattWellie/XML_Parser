@@ -26,24 +26,27 @@
 4) Program creates an output file based on the sequences used
 	
 ### Method:
-	Command line arguments are supplied to specify the input file and specific parameters
-	The appropriate sequence is read into a dictionary (multiple sequences where appropriate)
-	Tree iteration is used to find the coordinate details for all exons
-	The name of the output file is created using the input file title (LRG #)
-	Using the coordinates and specific sequence type, the specific portions of sequence corresponding to each
-		exon are output into a output file
-	The presence of an existing file of the same title is checked
-		If a file already exists, the user is prompted to overwrite (Y/N)
-			If the user chooses to overwrite, the program continues
-			If the user chooses not to, the program exits and reports that no output was created
-	
-	
+1) Command line arguments are supplied to specify the input file and specific parameters
+
+2) The Genomic sequence is read into a dictionary (multiple sequences where appropriate)
+
+3) Tree iteration is used to find the coordinate details for all exons and a dictionary is used to store the DNA extract and start/finish points of the exon
+
+4) In the event of protein sequences being required, the eTree is parsed to find each protein transcript, obtain the sequence, and stored each exon in a dictionary similar to the DNA dictionary
+
+5) The name of the output file is created using the input file title (LRG #)
+
+6) Using the coordinates and specific sequence type, the specific portions of sequence corresponding to each exon are output into a output file
+
+7)The presence of an existing file of the same title is checked; if a file already exists, the user is prompted to overwrite (Y/N)
+	- If the user chooses to overwrite, the program continues
+	- If the user chooses not to, the program exits and reports that no output was created
+
 ### Output:
 - FastA file format
 - Each exon is indvidually identified and paired with corresponding sequence (DNA/Protein/Both)
 - The description line identifies the exon number and transcript, so each can be used in isolation.
 	- This line also contains the length of the exon for quality control checking, and reference sequence creation
-	- 
 - Output file name was created using:
 	* the title of the input file
 	* the amount of flanking intron requested
@@ -63,7 +66,7 @@
 
 5) A loop to detect an additional option for genomic, transcript and protein sequences has been written. This would cause the program to choose between one of three separate methods, one for each type. Only one has been written as of 20/11/2014, although this program is extensible. Exceptions were also used to provide users with readable error messages if parameters or file contents were not found at runtime
 
-*** Note: This program was edited 03/12/2014 to add the coordinates of the exon start/finish to the printed FastA file, and to add protein sequence printing functionality to the program
+Note: This program was edited 03/12/2014 to add the coordinates of the exon start/finish to the printed FastA file, and to add protein sequence printing functionality to the program
 ---
 The added functionality is summarised below;
 * The program now takes a third argument by default (program name, target LRG, intronic padding, **Option**)
