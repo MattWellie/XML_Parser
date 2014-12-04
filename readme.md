@@ -48,18 +48,20 @@
 	* the title of the input file
 	* the amount of flanking intron requested
 	* the transcript name (to prevent overwriting in the case of multiple transcripts)
-	** An OS test is used to determine if a file with the specified name already exists, if so the user is prompted to continue or exit.
-	** This meant that only a file which would be the exact duplicate of an existing file (all parameters same) would be capable of replacing the current version
+	* An OS test is used to determine if a file with the specified name already exists, if so the user is prompted to continue or exit
+	* This meant that only a file which would be the exact duplicate of an existing file (all parameters same) would be capable of replacing the current version
 
 
 ### Testing:
 1) Correct performance of this program was confirmed by a combination of assert statements and error handling techniques throughout the code. Try-catch blocks were used to handle loops and element access which could produce issues in faulty XML files. Deliberately faulty XML files were used to check the performance of these measures.
+
 2) Assert statements have been used to prevent users from inserting the wrong inputs into the program, and to make sure that the number of valid command line arguments are not exceeded
+
 3) Assert statements are used throughout the indexing for string-slicing to ensure that the indexes used are not out of bounds (such as when the exon coordinates for transcripts are used for protein sequences)
+
 4) Try-catches are used during opening the input file, accessing th sequence elements and determining the intronic padding to be used when outputting the exons.
+
 5) A loop to detect an additional option for genomic, transcript and protein sequences has been written. This would cause the program to choose between one of three separate methods, one for each type. Only one has been written as of 20/11/2014, although this program is extensible. Exceptions were also used to provide users with readable error messages if parameters or file contents were not found at runtime
-
-
 
 *** Note: This program was edited 03/12/2014 to add the coordinates of the exon start/finish to the printed FastA file, and to add protein sequence printing functionality to the program
 ---
