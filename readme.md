@@ -2,17 +2,19 @@
 * **Goal: LRG IN; FASTA OUT**
 
 ### GUIDE:
-	To run this program, open a command line terminal and navigate to the directory containing this 
-	program (XML_Parser.py) and desired LRG files. Enter:
-		"python XML_Parser.py LRG_FILE_TITLE INTRONIC_PADDING_LENGTH"
-			Where LRG_FILE_TITLE is an LRG format file ending in ".xml"
-			And INTRONIC_PADDING_LENGTH is a number between 0 and 2000, specifying the length of 
-				intronic flanking sequence around the printed exons
-				As a default, flanking sequences are lower case, and exonic sequence is capitalized
-	This will run the program and create a new folder (if it does not already exist) called outputFiles"
-	If a file in the specified folder already exists, the program will report this at the command line and 
-	ask for a confirmation to continue
-		To be duplicated a file will have to have been created with the same input and flanking length
+- To run this program, open a command line terminal and navigate to the directory containing this program (XML_Parser.py) and desired LRG files. 
+- Enter:    "python XML_Parser.py **LRG_FILE_TITLE INTRONIC_PADDING_LENGTH SEQ_TYPE**"
+	- **LRG_FILE_TITLE** is an LRG format file ending in ".xml"
+	- **INTRONIC_PADDING_LENGTH** is a number between 0 and 2000, specifying the length of intronic flanking sequence around the printed exons
+		- As a default, flanking sequences are lower case, and exonic sequence is capitalized
+	- **SEQ_TYPE** is an option:
+		- *-g* to print only genomic values
+		- *-p* to print only protein values
+		- *-pg* or *-gp* to print both; genomic printed first
+- This will run the program and create a new folder (if it does not already exist) called "outputFiles"
+	- The file will be created in Unix, Windows will require the file to be created by User	
+- If a file in the specified folder already exists, the program will report this at the command line and ask for a confirmation to continue
+- To be duplicated a file will have to have been created with the same input and flanking length
 
 ### Input:
 1) Pass file title to program as a string argument (CMD line)
