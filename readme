@@ -1,7 +1,7 @@
-This project is to create an XML parser in Python capable of reading an LRG file
-	LRG IN; FASTA OUT
+##This project is to create an XML parser in Python capable of reading an LRG file
+#LRG IN; FASTA OUT
 
-GUIDE:
+#GUIDE:
 	To run this program, open a command line terminal and navigate to the directory containing this 
 	program (XML_Parser.py) and desired LRG files. Enter:
 		"python XML_Parser.py LRG_FILE_TITLE INTRONIC_PADDING_LENGTH"
@@ -14,13 +14,13 @@ GUIDE:
 	ask for a confirmation to continue
 		To be duplicated a file will have to have been created with the same input and flanking length
 
-Input:
+#Input:
 	Pass file title to program as a string argument (cmd line)
 	Optional argument to specify intronic sequence length around exons
 	Pass optional command to specify genomic, cDNA, protein.. (genomic default)
 	Program creates an output file based on the sequences used
 
-Method:
+#Method:
 	Command line arguments are supplied to specify the input file and specific parameters
 	The appropriate sequence is read into a dictionary (multiple sequences where appropriate)
 	Tree iteration is used to find the coordinate details for all exons
@@ -33,7 +33,7 @@ Method:
 			If the user chooses not to, the program exits and reports that no output was created
 	
 	
-Output:
+#Output:
 	FastA file format
 	Each exon is indvidually identified and paired with corresponding sequence
 	The description line identifies the exon number and transcript, so each can be used in isolation.
@@ -49,7 +49,7 @@ Output:
 	same) would be capable of replacing the current version
 		This may be desirable if writing with a new version of the program
 
-Testing:
+#Testing:
 	Correct performance of this program was confirmed by a combination of assert statements and 
 	error handling techniques throughout the code. Try-catch blocks were used to handle loops and 
 	element access which could produce issues in faulty XML files. Deliberately faulty XML files 
@@ -68,4 +68,17 @@ Testing:
 
 
 
-*** Note: This program was edited 03/12/2014 to add the coordinates of the exon start/finish to the printed FastA file. Thsi was requested by the genetics lab so they could use the application for creating reference sequence hard copies (getting helpless trainees to spend hours making references and calling it a 'competency')
+*** Note: This program was edited 03/12/2014 to add the coordinates of the exon start/finish to the printed FastA file. This was requested by the genetics lab so they could use the application for creating reference sequence hard copies (getting helpless trainees to spend hours making references and calling it a 'competency')
+---
+The added functionality is summarised below;
+* The program now takes a third argument by default (program name, target LRG, intronic padding, Option
+* Options and padding are not mandatory, but currently padding is required to input an option (argument ordering, I'll look into changing this)
+* Available options are 
+    - '-g': default, genomic sequence only
+    - '-p': protein sequence only
+    - '-pg' | '-gp': genomic and protein sequence. Layout is header, DNA, protein
+
+I will be going through this soon to standardise variable naming and testing that sequence extracts are correct (content and length)
+
+M. Welland
+    
