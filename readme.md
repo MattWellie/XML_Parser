@@ -1,4 +1,4 @@
-## This project is to create an XML parser in Python capable of reading an LRG file
+### An XML parser in Python for reading an LRG file and exporting exons + metadata
 * **Goal: LRG IN; FASTA OUT**
 
 ### GUIDE:
