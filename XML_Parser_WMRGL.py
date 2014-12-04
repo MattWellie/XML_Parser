@@ -117,12 +117,15 @@ def get_protein_exons(prot_level, exon_level, root):
         protexons = []
         #print 'for exon in...'
         for exon_item in root.findall(exon_level):
+            exon_counter = 0
             for exon in exon_item.iter('exon'):
+                exon_counter = exon_counter + 1
                 #print 'for coord in exon'
                 attribute_list = []
                 for coordinates in exon: 
                     attribute_list.append(coordinates.attrib['coord_system'][-2:])
                     #print 'if...'
+                print attribute_list
                 if prot_transcript in attribute_list:
                     for coordinates in exon: 
                         if coordinates.attrib['coord_system'][-2:] == prot_transcript:
@@ -133,8 +136,9 @@ def get_protein_exons(prot_level, exon_level, root):
                             seq = protein_seq[start_index-1:end_index]
                             protexons.append((exon.attrib['label'], start_index, end_index,seq))
                 else:
-                    protexons.append(('non-coding', 0, 0, ''))
+                    protexons.append((exon_counter, 0, 0, ''))
         proteindict[prot_transcript] = protexons
+        #print proteindict
     return proteindict
 
 
@@ -158,8 +162,8 @@ def print_both(prot_list, exon_list,gene,refseqid,outfile):
        
 #if elif options for which sequences need to be grabbed 
 if option == '-g':
-    x = grab_element('fixed_annotation/sequence', root)
-    td = get_exoncoords(fixannot,pad,x)
+    gen_seq = grab_element('fixed_annotation/sequence', root)
+    td = get_exoncoords(fixannot,pad,gen_seq)
     for y in td.keys():
         outputfile = fileName.split('.')[0]+'_'+y+"_"+str(pad)+'_Out.fasta'
         outputFilePath = os.path.join('outputFiles',outputfile)
@@ -214,7 +218,10 @@ else:
         y = td[td.keys()[entry]]
         p = pd[pd.keys()[entry]]
         #print p
-        #assert len(y) == len(p), "The number of exons are different, please check file"
+        print 'len y:', len(y)
+        print 'len p:', p
+
+        assert len(y) == len(p), "The number of exons are different, please check file"
         outputfile = str(fileName.split('.')[0])+'_DNA'+DNA_transcript+"-Prot"+prot_transcript+"_"+str(pad)+'intronic_DNA_PROT_Out.fasta'
         print outputfile
         outputFilePath = os.path.join('outputFiles',outputfile)
