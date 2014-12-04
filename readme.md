@@ -1,5 +1,5 @@
 ## This project is to create an XML parser in Python capable of reading an LRG file
-# LRG IN; FASTA OUT
+* **Goal: LRG IN; FASTA OUT**
 
 # GUIDE:
 	To run this program, open a command line terminal and navigate to the directory containing this 
