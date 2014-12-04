@@ -81,3 +81,5 @@ The added functionality is summarised below;
 
 M. Welland
     
+    
+Bug spotted; for printing protein and DNA of LRG_214, currently reports twice as many protein exons; half are empty objects. Likely a fault in the protein seq. dictionary handling compared with genomic (one genomic sequence per file, one protein sequence per transcript (not limited to one per file))
