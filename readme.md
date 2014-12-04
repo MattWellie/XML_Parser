@@ -16,8 +16,11 @@
 
 ### Input:
 1) Pass file title to program as a string argument (CMD line)
+
 2) Optional argument to specify intronic sequence length around exons
+
 3) Pass optional command to specify genomic, cDNA, protein; defaults to genomic
+
 4) Program creates an output file based on the sequences used
 	
 ### Method:
