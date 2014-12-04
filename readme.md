@@ -15,10 +15,10 @@
 		To be duplicated a file will have to have been created with the same input and flanking length
 
 ### Input:
-	Pass file title to program as a string argument (cmd line)
-	Optional argument to specify intronic sequence length around exons
-	Pass optional command to specify genomic, cDNA, protein.. (genomic default)
-	Program creates an output file based on the sequences used
+1) Pass file title to program as a string argument (CMD line)
+2) Optional argument to specify intronic sequence length around exons
+3) Pass optional command to specify genomic, cDNA, protein; defaults to genomic
+4) Program creates an output file based on the sequences used
 	
 ### Method:
 	Command line arguments are supplied to specify the input file and specific parameters
