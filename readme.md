@@ -1,7 +1,7 @@
 ## This project is to create an XML parser in Python capable of reading an LRG file
 * **Goal: LRG IN; FASTA OUT**
 
-# GUIDE:
+### GUIDE:
 	To run this program, open a command line terminal and navigate to the directory containing this 
 	program (XML_Parser.py) and desired LRG files. Enter:
 		"python XML_Parser.py LRG_FILE_TITLE INTRONIC_PADDING_LENGTH"
@@ -14,13 +14,13 @@
 	ask for a confirmation to continue
 		To be duplicated a file will have to have been created with the same input and flanking length
 
-# Input:
+### Input:
 	Pass file title to program as a string argument (cmd line)
 	Optional argument to specify intronic sequence length around exons
 	Pass optional command to specify genomic, cDNA, protein.. (genomic default)
 	Program creates an output file based on the sequences used
-
-# Method:
+	
+### Method:
 	Command line arguments are supplied to specify the input file and specific parameters
 	The appropriate sequence is read into a dictionary (multiple sequences where appropriate)
 	Tree iteration is used to find the coordinate details for all exons
@@ -33,7 +33,7 @@
 			If the user chooses not to, the program exits and reports that no output was created
 	
 	
-# Output:
+### Output:
 	FastA file format
 	Each exon is indvidually identified and paired with corresponding sequence
 	The description line identifies the exon number and transcript, so each can be used in isolation.
@@ -49,7 +49,7 @@
 	same) would be capable of replacing the current version
 		This may be desirable if writing with a new version of the program
 
-# Testing:
+### Testing:
 	Correct performance of this program was confirmed by a combination of assert statements and 
 	error handling techniques throughout the code. Try-catch blocks were used to handle loops and 
 	element access which could produce issues in faulty XML files. Deliberately faulty XML files 
