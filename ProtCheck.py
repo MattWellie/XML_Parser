@@ -1,3 +1,5 @@
+#Procedural program containing methods of the XML_Parser_WMRGL script to experiment
+#with protein extraction
 #Program to import a specified LRG file and export corresponding fasta
 import sys
 import xml.etree.ElementTree as etree
