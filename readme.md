@@ -80,6 +80,3 @@ The added functionality is summarised below;
 	* In WMRGL it is generally standard practice to have the amino acid encoded by a codon above the third letter of the codon, mostly for reasons of appearance. In the LRG file, the coordinates of the amino acids correspond to the base which encodes the *final* base of the codon. This means that at times the amino acids may not appear exactly where they are expected in the reference sequence document, but they will correspond to the correct portion of the sequence.
 
 M. Welland
-    
-    
-Bug spotted; for printing protein and DNA of LRG_214, currently reports twice as many protein exons; half are empty objects. Likely a fault in the protein seq. dictionary handling compared with genomic (one genomic sequence per file, one protein sequence per transcript (not limited to one per file))
